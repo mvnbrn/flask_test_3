@@ -3,28 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>TEST</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js" integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../static/js/main.js"></script>
+
 </head>
 
 <body>
 
-
+<h1 style="color: blue;  text-align: center;"> Test</h1>
 
 <form>
-    <button style="position: absolute; left: 100px;top: 100px; color: darkcyan" type="button" onclick="ft()"> send</button>
+    <button id="but_1" style="position: absolute; left: 200px;top: 100px; color: darkcyan" type="button" > send</button>
+
 </form>
-<label for=""></label>
-  <div>
+<!--<label for=""></label>-->
+
+<p>
+    Hi, it is  test HTML!
+</p>
+ <div class="resp">
+     Message _place
   </div>
-<p></p>
 <a href=""></a>
 <script>
-    function ft(){
-        console.log("click");}
 
-    //ft();
+$(document).ready(function() {
+    var socket = io();
+    //var tt=$(document).getElementById("#but_1")
+    //console.log(tt);
+    var tt=$("#but_1");
+    tt.click(function (){
+        console.log("click");
+        socket.emit('click_message',25);
+    })
+
+      socket.on('my_response', function(msg) {
+        //var dd=document.getElementsByClassName("resp")
+         var dd=$(".resp")
+        //console.log(tt);
+        //for(var i=0;i<tt.length;i++){
+            dd[0].innerHTML=msg;
+        //}
+       alert(msg);
+    })
+
+
+
+
+      //console.log("click");
+      //console.log($("#but_1"));
+    })
+
+
+
+
+
 </script>
+<!--
+<script>
+    var socket = io();
+    function ft() {
+             console.log("click");
+             socket.emit('click_message',25);
+         }
+    socket.on('my_response', function(msg) {
+        var tt=document.getElementsByClassName("resp")
+        console.log(tt)
+        for(var i=0;i<tt.length;i++){
+            tt[i].innerHTML=msg;
+        }
+       alert(msg)
+    })
+
+</script>
+-->
 
 </body>
 </html>
