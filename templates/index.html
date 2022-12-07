@@ -26,7 +26,13 @@
  <div class="resp">
      Message _place
   </div>
-<a href=""></a>
+<a href="/contact">Send to me</a> <br>
+<!--<a href="contact.html">Test</a> <br>-->
+<a  href="#new_join">Join</a> <br><br>
+
+
+<p id="new_join">Учтите, что zip файл не содержит в себе виртуального окружения
+    Создайте его сами, следуя инструкциям в первой части, перед тем, как вы сможете запустить приложение.</p>
 <script>
 
 $(document).ready(function() {
@@ -42,11 +48,12 @@ $(document).ready(function() {
       socket.on('my_response', function(msg) {
         //var dd=document.getElementsByClassName("resp")
          var dd=$(".resp")
-        //console.log(tt);
+
+        console.log(dd);
         //for(var i=0;i<tt.length;i++){
             dd[0].innerHTML=msg;
         //}
-       alert(msg);
+      // alert(msg);
     })
 
 
