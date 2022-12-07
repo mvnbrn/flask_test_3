@@ -62,11 +62,10 @@ def background_work():
     i=0
     while True:
         mes = "Counter = "+str(counter) + " second"
-        while i < 1000000000:
-            i += 1
+
         print(mes)
         socketio.emit('my_response', mes)
-        #time.sleep(1)
+        time.sleep(1)
         counter += 1
         i = 0
         #time.sleep(2)
