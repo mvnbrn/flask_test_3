@@ -59,7 +59,7 @@ def click_message(sid):
 def server():
     socketio.run(app, port=5000)
 
-
+#-------------------------------------------
 counter= 0
 counter_2=0
 def background_work():
