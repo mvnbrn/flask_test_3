@@ -22,7 +22,12 @@ def print_hi(name):
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app,logger=True)
+app.config['COMPRESSOR_STATIC_PREFIX'] = 'static'
+#app.static_folder = 'static'
+#app.logger.disabled = True
+#log = logging.getLogger('werkzeug')
+#log.disabled = True
+socketio = SocketIO(app,logger=True,async_mode=async_mode,engineio_logger=False,always_connect=True)
 
 @app.route('/')
 def index():
